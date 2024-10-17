@@ -22,5 +22,8 @@
   <app-product-form 
     (callParentEvent)="onFormEventCalled($event)"
     [title]="'Add Product'"
+    [categoryObtenida]="categoriesList"
+    (categoryChange)="onCategoryChange($event)"
+    [categories]="categoryService.items$()"
   ></app-product-form>
 </app-modal>

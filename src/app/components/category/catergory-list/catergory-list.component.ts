@@ -28,6 +28,7 @@ export class CatergoryListComponent {
 
   onFormEventCalled(params: ICategory) {
     this.categoryService.save(params);
+    location.reload();
     this.modalService.dismissAll();
   }
 

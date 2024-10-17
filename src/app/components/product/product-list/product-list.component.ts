@@ -28,6 +28,7 @@ export class ProductListComponent {
 
   onFormEventCalled(params: IProduct) {
     this.productService.save(params);
+    location.reload();
     this.modalService.dismissAll();
   }
 

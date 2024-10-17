@@ -48,7 +48,7 @@
       />
     </div>
     <div class="col-6">
-      <select #category="ngModel" class="form-control" id="category" name="category" 
+      <select #category="ngModel" class="form-control" id="category" name="category" (change)="onProductChange($event)"
         [(ngModel)]="toUpdateProduct.category" 
         [ngClass]="{ 
           'is-invalid': category.invalid && category.touched,

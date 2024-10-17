@@ -4,9 +4,10 @@ import { ProductListComponent } from "../../components/product/product-list/prod
 import { ProductFormComponent } from "../../components/product/product-form/product-form.component";
 import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
-import { IProduct } from '../../interfaces';
+import { ICategory, IProduct } from '../../interfaces';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-product',
@@ -24,6 +25,12 @@ import { ModalComponent } from '../../components/modal/modal.component';
 export class ProductComponent {
   public productService = inject(ProductService);
   public modalService = inject(NgbModal);
+  public categoryService = inject(CategoryService);
+
+  categoriesList: ICategory = {
+    id: 0,
+    name: ''
+  }
 
   constructor() {
     this.productService.getAll();
@@ -32,5 +39,9 @@ export class ProductComponent {
   onFormEventCalled(params: IProduct) {
     this.productService.save(params);
     this.modalService.dismissAll();
+  }
+
+  onCategoryChange(params: ICategory) {
+    console.log("onCategoriesChange", params)
   }
 }
