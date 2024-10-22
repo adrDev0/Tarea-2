@@ -5,10 +5,12 @@
   <div>
     @defer {
     <div class="d-flex justify-content-end pb-2">
-      <button type="button" class="btn btn-primary d-flex align-items-center" (click)="formModal.show()">
-        <i class="fa-solid fa-plus white"></i>
-        <p class="mb-0">Add Product</p>
-      </button>
+      @if (currentRole === "SUPER_ADMIN_ROLE") {
+        <button type="button" class="btn btn-primary d-flex align-items-center" (click)="formModal.show()">
+          <i class="fa-solid fa-plus white"></i>
+          <p class="mb-0">Add Product</p>
+        </button>
+      }
     </div>
     <app-product-list
       [itemList]="productService.items$()"
@@ -22,8 +24,5 @@
   <app-product-form 
     (callParentEvent)="onFormEventCalled($event)"
     [title]="'Add Product'"
-    [categoryObtenida]="categoriesList"
-    (categoryChange)="onCategoryChange($event)"
-    [categories]="categoryService.items$()"
   ></app-product-form>
 </app-modal>

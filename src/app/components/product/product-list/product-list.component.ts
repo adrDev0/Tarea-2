@@ -20,6 +20,14 @@ export class ProductListComponent {
   public selectedItem: IProduct = {};
   private productService = inject(ProductService);
   public modalService = inject(NgbModal);
+  currentRole: string | undefined;
+
+  constructor() {
+    let user = localStorage.getItem('auth_user');
+    if(user) {
+      this.currentRole = String(JSON.parse(user)?.role.name);
+    }
+  }
 
   showDetailModal(item: IProduct, modal:any) {
     this.selectedItem = {...item};

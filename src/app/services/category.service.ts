@@ -3,6 +3,7 @@ import { BaseService } from './base-service';
 import { ICategory, IResponse } from '../interfaces';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class CategoryService extends BaseService<ICategory>{
   protected override source: string = 'category';
   private itemListSignal = signal<ICategory[]>([]);
 
-  get items$() {
-    return this.itemListSignal;
+  get items$(): Observable<ICategory[]> {
+    return of(this.itemListSignal());
   }
 
   public getAll() {

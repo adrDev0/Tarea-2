@@ -26,6 +26,7 @@ export class ProductComponent {
   public productService = inject(ProductService);
   public modalService = inject(NgbModal);
   public categoryService = inject(CategoryService);
+  currentRole: string | undefined;
 
   categoriesList: ICategory = {
     id: 0,
@@ -34,6 +35,10 @@ export class ProductComponent {
 
   constructor() {
     this.productService.getAll();
+    let user = localStorage.getItem('auth_user');
+    if(user) {
+      this.currentRole = String(JSON.parse(user)?.role.name);
+    }
   }
   
   onFormEventCalled(params: IProduct) {

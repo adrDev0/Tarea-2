@@ -15,16 +15,18 @@
                   <td>{{item.name}}</td>
                   <td>{{item.descripcion}}</td>
                   <td>
-                    <div class="d-flex justify-content-evenly align-items-center">
-                      <button type="button" (click)="showDetailModal(item, detailModal)" class="btn btn-secondary">
-                        <i class="fa-solid fa-eye white"
-                        ></i>
-                      </button>
-                      <button type="button" (click)="deleteCategory(item)" class="btn btn-danger">
-                        <i class="fa-solid fa-trash white"
-                        ></i>
-                      </button>
-                    </div>
+                    @if (currentRole === "SUPER_ADMIN_ROLE") {
+                      <div class="d-flex justify-content-evenly align-items-center">
+                        <button type="button" (click)="showDetailModal(item, detailModal)" class="btn btn-secondary">
+                          <i class="fa-solid fa-eye white"
+                          ></i>
+                        </button>
+                        <button type="button" (click)="deleteCategory(item)" class="btn btn-danger">
+                          <i class="fa-solid fa-trash white"
+                          ></i>
+                        </button>
+                      </div>
+                    }
                   </td>
                 </tr>
               }

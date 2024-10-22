@@ -24,9 +24,14 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CategoryComponent {
   public categoryService = inject(CategoryService);
   public modalService = inject(NgbModal);
+  currentRole: string | undefined;
 
   constructor() {
     this.categoryService.getAll();
+    let user = localStorage.getItem('auth_user');
+    if(user) {
+      this.currentRole = String(JSON.parse(user)?.role.name);
+    }
   }
   
   onFormEventCalled(params: ICategory) {
