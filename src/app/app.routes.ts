@@ -47,6 +47,7 @@ export const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+        canActivate: [AdminRoleGuard],
         data: { 
           authorities: [
             IRoleType.superAdmin
