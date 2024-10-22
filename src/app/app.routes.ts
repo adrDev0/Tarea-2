@@ -101,8 +101,8 @@ export const routes: Routes = [
           ],
           name: 'product',
           showInSidebar: true
-        }
-      }
+        },
+      },
     ],
   },
 ];
